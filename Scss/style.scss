@@ -1,0 +1,86 @@
+// Variables for colors and sizes
+$background-color: #f0f0f0;
+$canvas-background: #000;
+$snake-color: #4caf50;
+$food-color: #ff5722;
+$text-color: #333;
+$font-family-main: 'Arial', sans-serif;
+$font-family-secondary: 'Times New Roman', cursive;
+
+// Body styling
+body {
+    background-color: $background-color;
+    font-family: $font-family-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+// Game container
+#Container {
+    position: relative;
+    width: 500px; // Match canvas size
+    height: 500px; // Match canvas size
+    border: 2px solid $text-color;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9); // Slightly white background for contrast
+    text-align: center; // Center align text in the container
+}
+
+// Canvas styling
+#gameBoard {
+    width: 100%; // Responsive width
+    height: 100%; // Responsive height
+    border: 3px solid $text-color; // Solid border for the game board
+    background-color: $canvas-background; // Set canvas background color
+}
+
+// Score display
+#score {
+    font-family: $font-family-secondary;
+    font-size: 100px; // Large font for score
+    color: $text-color;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.8); // Semi-transparent background
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+// Reset button styling
+#resetButton {
+    font-family: $font-family-secondary;
+    font-size: 22px;
+    width: 100px;
+    height: 50px;
+    color: #fff;
+    background-color: $snake-color; // Match the snake color for branding
+    border: 4px solid $text-color; // Border color for the button
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: darken($snake-color, 10%); // Darker shade on hover
+    }
+}
+
+// Game Over screen styling
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 50px;
+    font-family: $font-family-secondary;
+    color: $text-color;
+    display: none; // Hide initially
+    background-color: rgba(0, 0, 0, 0.7); // Semi-transparent black background
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}

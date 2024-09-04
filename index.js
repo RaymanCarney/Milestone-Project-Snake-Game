@@ -58,9 +58,16 @@ function createFood() {
         return randNum
     }
     //Creates a function to be able to have the food randomly generate on the field
-    foodX = randomFood(0, gameWidth - unitSize);
-    foodY = randomFood(0, gameWidth - unitSize);
+    let foodOverlapSnake = true;
+    while (foodOverlapSnake) {
+        foodX = randomFood(0, gameWidth - unitSize);
+        foodY = randomFood(0, gameWidth - unitSize);
     //This code randomly places the food on the field with the help of the function
+        foodOverlapSnake = snake.some(part => part.x === foodX && part.y === foodY)
+        //Stops the food from being placed inside of the snake
+    }
+
+
 };
 function clearBoard() {
     ctx.fillStyle = boardBackground;
@@ -174,4 +181,22 @@ function resetGame() {
     ];
     gameStart();
     //Resets the game when the reset button is clicked
+};
+function increaseScore() {
+    scoring++;
+};
+function displayScore(){
+    ctx.font = "20px Times New Romen";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "left";
+    ctx.fillText("Score: " + scoring, 10, 30);
+};
+function saveScore() {
+    localStorage.setItem("snakeGameScore", scoring);
+};
+function loadScore() {
+    const savedScore = localStorage.getItem("snakeGameScore");
+    if (savedScore) {
+        scoring = parseInt(savedScore);
+    };
 };
